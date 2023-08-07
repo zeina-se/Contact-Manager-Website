@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './card.css'
+
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhoneNumber] = useState('');
@@ -24,14 +26,13 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        // Contact added successfully
+        
         // Clear the form fields
         setName('');
         setPhoneNumber('');
         setLatitude('');
         setLongitude('');
       } else {
-        // Handle error response
         console.error('Error adding contact:', response.statusText);
       }
     } catch (error) {
@@ -41,42 +42,29 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Name:
+      
         <input
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)} placeholder='Name'
         />
-      </label>
-      <br />
-      <label>
-        Phone Number:
-        <input
+    
+         <input
           type="text"
           value={phone}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          onChange={(e) => setPhoneNumber(e.target.value)} placeholder='Phone Number'
         />
-      </label>
-      <br />
-      <label>
-        Latitude:
+      
         <input
           type="text"
           value={latitude}
-          onChange={(e) => setLatitude(e.target.value)}
+          onChange={(e) => setLatitude(e.target.value)} placeholder='Latitude'
         />
-      </label>
-      <br />
-      <label>
-        Longitude:
         <input
           type="text"
           value={longitude}
-          onChange={(e) => setLongitude(e.target.value)}
+          onChange={(e) => setLongitude(e.target.value)} placeholder='Longitude'
         />
-      </label>
-      <br />
       <button type="submit">Add Contact</button>
     </form>
   );
